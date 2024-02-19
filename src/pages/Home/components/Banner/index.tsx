@@ -3,11 +3,10 @@ import {
   Container,
   ContentContainer,
   IconContainer,
-  ImageContainer,
   Infos,
   Title,
 } from "./styles";
-import bannerImage from "../../../assets/banner-image.svg";
+import bannerImage from "../../../../assets/banner-image.svg";
 
 export const Banner = () => {
   return (
@@ -47,9 +46,7 @@ export const Banner = () => {
           </div>
         </Infos>
       </ContentContainer>
-      <ImageContainer>
-        <img src={bannerImage} alt="Imagem de café no banner" />
-      </ImageContainer>
+      <img src={bannerImage} alt="Imagem de café no banner" />
     </Container>
   );
 };

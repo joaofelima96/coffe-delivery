@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import { DefaultTheme } from "../../../styles/DefaultTheme";
+import { DefaultTheme } from "../../../../styles/DefaultTheme";
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 92px 160px;
+  padding: 92px 0;
 `;
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 66px;
 `;
-export const ImageContainer = styled.div``;
+
 export const Title = styled.div`
   width: 588px;
   display: flex;
@@ -68,10 +68,18 @@ export const IconContainer = styled.div<IconProps>`
   padding: 10px;
   border-radius: 99px;
 
-  background-color: ${(props) =>
-    props.isShopingCart && DefaultTheme.colors.yellowDark};
-  background-color: ${(props) =>
-    props.isPackage && DefaultTheme.colors.base.text};
-  background-color: ${(props) => props.isClock && DefaultTheme.colors.yellow};
-  background-color: ${(props) => props.isCoffee && DefaultTheme.colors.purple};
+  background-color: ${(props) => {
+    switch (true) {
+      case props.isShopingCart:
+        return DefaultTheme.colors.yellowDark;
+      case props.isPackage:
+        return DefaultTheme.colors.base.text;
+      case props.isClock:
+        return DefaultTheme.colors.yellow;
+      case props.isCoffee:
+        return DefaultTheme.colors.purple;
+      default:
+        return "transparent";
+    }
+  }};
 `;
