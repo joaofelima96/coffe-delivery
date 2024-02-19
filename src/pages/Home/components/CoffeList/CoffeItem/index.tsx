@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
+import { ShoppingCart } from "@phosphor-icons/react";
 import { CoffeItemProps } from "./types";
 
 import expressoTradicional from "../../../../../assets/coffes/expresso-tradicional.svg";
@@ -9,6 +9,7 @@ import {
   QtyContainer,
   ImageContainer,
   ShoppingCartContainer,
+  QtyButton,
 } from "./styles";
 import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 import { useState } from "react";
@@ -20,6 +21,8 @@ export const CoffeItem = ({
   coffePrice,
 }: CoffeItemProps) => {
   const [qty, setQty] = useState(1);
+
+  const isDisabled = qty === 1;
 
   const handleAddQty = () => {
     setQty((state) => state + 1);
@@ -42,17 +45,11 @@ export const CoffeItem = ({
         <p>{coffePrice}</p>
         <div>
           <QtyContainer>
-            <Minus
-              color={DefaultTheme.colors.purple}
-              weight="bold"
-              onClick={() => handleRemoveQty()}
-            />
+            <QtyButton onClick={() => handleRemoveQty()} disabled={isDisabled}>
+              -
+            </QtyButton>
             <span>{qty}</span>
-            <Plus
-              color={DefaultTheme.colors.purple}
-              weight="bold"
-              onClick={() => handleAddQty()}
-            />
+            <QtyButton onClick={() => handleAddQty()}>+</QtyButton>
           </QtyContainer>
           <ShoppingCartContainer>
             <ShoppingCart

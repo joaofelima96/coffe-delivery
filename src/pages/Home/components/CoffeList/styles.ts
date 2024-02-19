@@ -8,5 +8,5 @@ export const CoffeListContainer = styled.div`
   column-gap: 32px;
   row-gap: 40px;
 
-  padding-top: 54px;
+  padding: 54px 0 160px 0;
 `;

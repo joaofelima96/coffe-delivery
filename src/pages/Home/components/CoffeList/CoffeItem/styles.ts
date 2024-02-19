@@ -99,7 +99,7 @@ export const QtyContainer = styled.div`
   align-items: center;
   gap: 4px;
 
-  padding: 12px 8px;
+  padding: 10px 8px;
   border-radius: 6px;
 
   background-color: ${DefaultTheme.colors.base.button};
@@ -116,9 +116,40 @@ export const QtyContainer = styled.div`
   }
 `;
 
+export const QtyButton = styled.button`
+  border-style: none;
+  background-color: transparent;
+
+  padding: 2px;
+  border-radius: 100px;
+
+  font-family: ${DefaultTheme.fonts.family.roboto};
+  font-size: ${DefaultTheme.fonts.size.titleS};
+  font-weight: ${DefaultTheme.fonts.weight.bold};
+  color: ${DefaultTheme.colors.purple};
+
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: ${DefaultTheme.colors.base.card};
+  }
+
+  &:disabled {
+    color: ${DefaultTheme.colors.base.label};
+    cursor: not-allowed;
+  }
+`;
+
 export const ShoppingCartContainer = styled.div`
   padding: 11.4px;
   border-radius: 6px;
 
+  cursor: pointer;
+
   background-color: ${DefaultTheme.colors.purpleDark};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${DefaultTheme.colors.purple};
+  }
 `;
