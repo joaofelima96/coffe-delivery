@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultTheme } from "../../../../styles/DefaultTheme";
+import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
 export const PaymentContainer = styled.div`
   display: flex;

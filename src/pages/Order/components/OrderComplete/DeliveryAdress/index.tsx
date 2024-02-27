@@ -1,6 +1,6 @@
 import { MapPinLine } from "@phosphor-icons/react";
 import { AdressContainer, Container } from "./styles";
-import { DefaultTheme } from "../../../../styles/DefaultTheme";
+import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
 export const DeliveryAdress = () => {
   return (

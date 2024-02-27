@@ -5,8 +5,9 @@ import {
   Money,
 } from "@phosphor-icons/react";
 import { Container } from "../DeliveryAdress/styles";
-import { DefaultTheme } from "../../../../styles/DefaultTheme";
+
 import { PaymentContainer, PaymentFormatContainer } from "./styles";
+import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
 export const Payment = () => {
   return (

@@ -6,13 +6,12 @@ import {
   Container,
   CoffeInfoSection,
   ShopSection,
-  QtyContainer,
   ImageContainer,
   ShoppingCartContainer,
-  QtyButton,
 } from "./styles";
 import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 import { useState } from "react";
+import { Counter } from "../../../../../components/Counter";
 
 export const CoffeItem = ({
   coffeName,
@@ -20,15 +19,10 @@ export const CoffeItem = ({
   coffeType,
   coffePrice,
 }: CoffeItemProps) => {
-  const [qty, setQty] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
-  const isDisabled = qty === 1;
-
-  const handleAddQty = () => {
-    setQty((state) => state + 1);
-  };
-  const handleRemoveQty = () => {
-    setQty((state) => state - 1);
+  const handleChildQtyChange = (newQty: number) => {
+    setQuantity(newQty);
   };
 
   return (
@@ -44,13 +38,7 @@ export const CoffeItem = ({
       <ShopSection>
         <p>{coffePrice}</p>
         <div>
-          <QtyContainer>
-            <QtyButton onClick={() => handleRemoveQty()} disabled={isDisabled}>
-              -
-            </QtyButton>
-            <span>{qty}</span>
-            <QtyButton onClick={() => handleAddQty()}>+</QtyButton>
-          </QtyContainer>
+          <Counter quantity={quantity} onQtyChange={handleChildQtyChange} />
           <ShoppingCartContainer>
             <ShoppingCart
               size={22}

@@ -1,5 +1,5 @@
-import { OrderComplete } from "./OrderComplete";
-import { SelectedCoffes } from "./SelectedCoffes";
+import { OrderComplete } from "./components/OrderComplete";
+import { SelectedCoffes } from "./components/SelectedCoffes";
 import { Container } from "./styles";
 
 export const Order = () => {
