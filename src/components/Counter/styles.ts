@@ -8,7 +8,7 @@ export const QtyContainer = styled.div`
   justify-content: space-between;
   gap: 4px;
 
-  padding: 10px 8px;
+  padding: 6px 8px;
   border-radius: 6px;
 
   background-color: ${DefaultTheme.colors.base.button};
