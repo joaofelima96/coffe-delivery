@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { DefaultTheme } from "../../styles/DefaultTheme";
 
 export const QtyContainer = styled.div`
+  width: 59px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 4px;
 
   padding: 10px 8px;
