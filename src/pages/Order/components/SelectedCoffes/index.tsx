@@ -1,18 +1,39 @@
-import coffe from "../../../../assets/coffes/expresso-tradicional.svg";
+import {
+  CartContainer,
+  PriceContainer,
+  PriceInfos,
+  Title,
+  Total,
+  TotalItemsAndDelivery,
+} from "./styles";
+import { CartItems } from "./CartItems";
 
 export const SelectedCoffes = () => {
   return (
     <div>
-      <span>Selected Coffes</span>
+      <Title>Selected Coffes</Title>
 
-      <div>
-        <div>
-          <img src={coffe} alt="café" />
-        </div>
-        <div>
-          <span>Expresso Tradicional</span>
-        </div>
-      </div>
+      <CartContainer>
+        <CartItems />
+
+        <PriceContainer>
+          <PriceInfos>
+            <TotalItemsAndDelivery>
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </TotalItemsAndDelivery>
+            <TotalItemsAndDelivery>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </TotalItemsAndDelivery>
+            <Total>
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </Total>
+          </PriceInfos>
+          <button type="button">CONFIRMAR PEDIDO</button>
+        </PriceContainer>
+      </CartContainer>
     </div>
   );
 };
