@@ -41,7 +41,7 @@ export const CoffeItem = ({
           <Counter quantity={quantity} onQtyChange={handleChildQtyChange} />
           <ShoppingCartContainer>
             <ShoppingCart
-              size={22}
+              size={16}
               color={DefaultTheme.colors.white}
               weight="fill"
             />
