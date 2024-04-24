@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import { DefaultTheme } from "../../../../styles/DefaultTheme";
 
+export const Container = styled.form`
+  display: flex;
+  padding: 40px 160px 160px 160px;
+  gap: 32px;
+`;
+
+export const AdressAndPaymentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
 export const CartContainer = styled.div`
   display: flex;
   flex-direction: column;

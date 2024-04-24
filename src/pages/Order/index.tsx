@@ -1,12 +1,5 @@
-import { OrderComplete } from "./components/OrderComplete";
-import { SelectedCoffes } from "./components/SelectedCoffes";
-import { Container } from "./styles";
+import { OrderToComplete } from "./components/OrderToComplete";
 
 export const Order = () => {
-  return (
-    <Container>
-      <OrderComplete />
-      <SelectedCoffes />
-    </Container>
-  );
+  return <OrderToComplete />;
 };
