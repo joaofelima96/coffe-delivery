@@ -23,8 +23,10 @@ export const Payment = () => {
       <section>
         <CurrencyDollarSimple size={22} color={DefaultTheme.colors.purple} />
         <div>
-          <span>Endereço de entrega</span>
-          <p>Informe o endereço onde deseja receber seu pedido</p>
+          <span>Pagamento</span>
+          <p>
+            O pagamento é feito na entrega. Escolha a forma que deseja pagar
+          </p>
         </div>
       </section>
 
