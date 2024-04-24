@@ -36,6 +36,7 @@ export const PaymentFormatContainer = styled.div`
   }
 
   input {
+    cursor: pointer;
     appearance: none;
     width: 178px;
     height: 51px;

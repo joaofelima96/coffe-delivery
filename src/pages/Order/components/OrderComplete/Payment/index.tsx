@@ -10,6 +10,14 @@ import { PaymentContainer, PaymentFormatContainer } from "./styles";
 import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
 export const Payment = () => {
+  const isCreditChecked = (
+    document.getElementById("credit") as HTMLInputElement
+  )?.checked;
+  const isDebitChecked = (document.getElementById("debit") as HTMLInputElement)
+    ?.checked;
+  const isMoneyChecked = (document.getElementById("money") as HTMLInputElement)
+    ?.checked;
+
   return (
     <Container>
       <section>
@@ -22,8 +30,8 @@ export const Payment = () => {
 
       <PaymentContainer>
         <PaymentFormatContainer>
-          <label htmlFor="">
-            <input type="radio" name="credit" id="" />
+          <label>
+            <input type="radio" name="payment" id="credit" />
             <div>
               <CreditCard size={15} color={DefaultTheme.colors.purple} />
               <span>CARTÃO DE CRÉDITO</span>
@@ -31,8 +39,8 @@ export const Payment = () => {
           </label>
         </PaymentFormatContainer>
         <PaymentFormatContainer>
-          <label htmlFor="">
-            <input type="radio" name="credit" id="" />
+          <label>
+            <input type="radio" name="payment" id="debit" />
             <div>
               <Bank size={15} color={DefaultTheme.colors.purple} />
               <span>CARTÃO DE DÉBITO</span>
@@ -40,8 +48,8 @@ export const Payment = () => {
           </label>
         </PaymentFormatContainer>
         <PaymentFormatContainer>
-          <label htmlFor="">
-            <input type="radio" name="credit" id="" />
+          <label>
+            <input type="radio" name="payment" id="money" />
             <div>
               <Money size={15} color={DefaultTheme.colors.purple} />
               <span>DINHEIRO</span>
