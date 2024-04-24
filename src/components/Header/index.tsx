@@ -28,23 +28,25 @@ export const Header = () => {
           <p>Mogi Guaçu, SP</p>
         </LocationContainer>
 
-        <ShopContainer
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          isHovered={isHovered}
-        >
-          <ShoppingCart
-            size={22}
-            color={
-              isHovered
-                ? DefaultTheme.colors.yellowLight
-                : DefaultTheme.colors.yellowDark
-            }
-            weight="fill"
-          />
+        <NavLink to={"/order"}>
+          <ShopContainer
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            isHovered={isHovered}
+          >
+            <ShoppingCart
+              size={22}
+              color={
+                isHovered
+                  ? DefaultTheme.colors.yellowLight
+                  : DefaultTheme.colors.yellowDark
+              }
+              weight="fill"
+            />
 
-          <QtyProducts isHovered={isHovered}>3</QtyProducts>
-        </ShopContainer>
+            <QtyProducts isHovered={isHovered}>3</QtyProducts>
+          </ShopContainer>
+        </NavLink>
       </LocationCartContainer>
     </HeaderContainer>
   );
