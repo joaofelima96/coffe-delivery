@@ -95,7 +95,7 @@ export const ShopSection = styled.div`
 `;
 
 export const ShoppingCartContainer = styled.div`
-  padding: 11.4px;
+  padding: 8px;
   border-radius: 6px;
 
   cursor: pointer;
