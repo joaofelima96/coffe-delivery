@@ -35,18 +35,15 @@ export const LocationContainer = styled.div`
   }
 `;
 
-interface IconProps {
-  isHovered: boolean;
-}
-
-export const ShopContainer = styled.div<IconProps>`
+export const ShopContainer = styled.div`
   position: relative;
   padding: 0.5rem;
 
-  background-color: ${(props) =>
-    props.isHovered
-      ? DefaultTheme.colors.yellowDark
-      : DefaultTheme.colors.yellowLight};
+  &:hover {
+    background-color: ${DefaultTheme.colors.yellowDark};
+  }
+
+  background-color: ${DefaultTheme.colors.yellowLight};
   border-radius: 6px;
 
   transition: background-color 0.2s ease;
@@ -54,20 +51,14 @@ export const ShopContainer = styled.div<IconProps>`
   cursor: pointer;
 `;
 
-export const QtyProducts = styled.p<IconProps>`
+export const QtyProducts = styled.p`
   font-family: ${DefaultTheme.fonts.family.roboto};
   font-size: ${DefaultTheme.fonts.size.textS};
   font-weight: ${DefaultTheme.fonts.weight.bold};
   line-height: ${DefaultTheme.fonts.lineHeight._130};
-  color: ${(props) =>
-    props.isHovered
-      ? DefaultTheme.colors.yellowDark
-      : DefaultTheme.colors.yellowLight};
+  color: ${DefaultTheme.colors.yellowLight};
 
-  background: ${(props) =>
-    props.isHovered
-      ? DefaultTheme.colors.yellowLight
-      : DefaultTheme.colors.yellowDark};
+  background: ${DefaultTheme.colors.yellowDark};
   border-radius: 900px;
 
   transition: background-color 0.2s ease;

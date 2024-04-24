@@ -32,7 +32,6 @@ export const Header = () => {
           <ShopContainer
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            isHovered={isHovered}
           >
             <ShoppingCart
               size={22}
@@ -44,7 +43,7 @@ export const Header = () => {
               weight="fill"
             />
 
-            <QtyProducts isHovered={isHovered}>3</QtyProducts>
+            <QtyProducts>3</QtyProducts>
           </ShopContainer>
         </NavLink>
       </LocationCartContainer>
