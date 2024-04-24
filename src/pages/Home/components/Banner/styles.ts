@@ -36,6 +36,12 @@ export const Title = styled.div`
     color: ${DefaultTheme.colors.base.subtitle};
   }
 `;
+
+export const IconContainer = styled.div`
+  padding: 10px;
+  border-radius: 99px;
+`;
+
 export const Infos = styled.div`
   display: grid;
   grid-template-columns: 250px 310px;
@@ -43,6 +49,27 @@ export const Infos = styled.div`
   column-gap: 40px;
 
   div {
+    &:nth-child(1) {
+      > ${IconContainer} {
+        background-color: ${DefaultTheme.colors.yellowDark};
+      }
+    }
+    &:nth-child(2) {
+      > ${IconContainer} {
+        background-color: ${DefaultTheme.colors.base.text};
+      }
+    }
+    &:nth-child(3) {
+      > ${IconContainer} {
+        background-color: ${DefaultTheme.colors.yellow};
+      }
+    }
+    &:nth-child(4) {
+      > ${IconContainer} {
+        background-color: ${DefaultTheme.colors.purple};
+      }
+    }
+
     display: flex;
     align-items: center;
     gap: 20px;
@@ -55,31 +82,4 @@ export const Infos = styled.div`
       color: ${DefaultTheme.colors.base.text};
     }
   }
-`;
-
-interface IconProps {
-  isShopingCart?: boolean;
-  isPackage?: boolean;
-  isClock?: boolean;
-  isCoffee?: boolean;
-}
-
-export const IconContainer = styled.div<IconProps>`
-  padding: 10px;
-  border-radius: 99px;
-
-  background-color: ${(props) => {
-    switch (true) {
-      case props.isShopingCart:
-        return DefaultTheme.colors.yellowDark;
-      case props.isPackage:
-        return DefaultTheme.colors.base.text;
-      case props.isClock:
-        return DefaultTheme.colors.yellow;
-      case props.isCoffee:
-        return DefaultTheme.colors.purple;
-      default:
-        return "transparent";
-    }
-  }};
 `;

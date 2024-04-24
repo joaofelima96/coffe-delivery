@@ -21,25 +21,25 @@ export const Banner = () => {
         </Title>
         <Infos>
           <div>
-            <IconContainer isShopingCart>
+            <IconContainer>
               <ShoppingCart size={16} weight="fill" color="white" />
             </IconContainer>
             <p>Compra simples e segura</p>
           </div>
           <div>
-            <IconContainer isPackage>
+            <IconContainer>
               <Package size={16} weight="fill" color="white" />
             </IconContainer>
             <p>Embalagem mantém o café intacto</p>
           </div>
           <div>
-            <IconContainer isClock>
+            <IconContainer>
               <Clock size={16} weight="fill" color="white" />
             </IconContainer>
             <p>Entrega rápida e rastreada</p>
           </div>
           <div>
-            <IconContainer isCoffee>
+            <IconContainer>
               <Coffee size={16} weight="fill" color="white" />
             </IconContainer>
             <p>O café chega fresquinho até você</p>
