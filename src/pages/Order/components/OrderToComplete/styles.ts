@@ -42,6 +42,11 @@ export const CartContainer = styled.div`
     color: ${DefaultTheme.colors.white};
 
     cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 `;
 

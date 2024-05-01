@@ -3,7 +3,13 @@ import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
 export const PaymentContainer = styled.div`
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 5px;
+
+  > div {
+    display: flex;
+    gap: 12px;
+  }
 `;
 
 export const PaymentFormatContainer = styled.div`
@@ -36,6 +42,7 @@ export const PaymentFormatContainer = styled.div`
   }
 
   input {
+    margin: 0;
     cursor: pointer;
     appearance: none;
     width: 178px;
