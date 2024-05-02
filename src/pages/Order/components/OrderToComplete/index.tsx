@@ -147,7 +147,12 @@ export const OrderToComplete = () => {
               <p>{errors.cep && errors.cep.message}</p>
             </div>
             <div>
-              <input type="text" placeholder="Rua" {...register("street")} />
+              <input
+                type="text"
+                placeholder="Rua"
+                {...register("street")}
+                disabled
+              />
               <p>{errors.street && errors.street.message}</p>
             </div>
             <div>
@@ -172,15 +177,26 @@ export const OrderToComplete = () => {
                 type="text"
                 placeholder="Bairro"
                 {...register("neighborhood")}
+                disabled
               />
               <p>{errors.neighborhood && errors.neighborhood.message}</p>
             </div>
             <div>
-              <input type="text" placeholder="Cidade" {...register("city")} />
+              <input
+                type="text"
+                placeholder="Cidade"
+                {...register("city")}
+                disabled
+              />
               <p>{errors.city && errors.city.message}</p>
             </div>
             <div>
-              <input type="text" placeholder="UF" {...register("uf")} />
+              <input
+                type="text"
+                placeholder="UF"
+                {...register("uf")}
+                disabled
+              />
               <p>{errors.uf && errors.uf.message}</p>
             </div>
           </AdressContainer>
