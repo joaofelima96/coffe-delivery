@@ -75,27 +75,6 @@ export const AdressContainer = styled.div`
     }
   }
 
-  select {
-    border-style: none;
-    border-radius: 4px;
-    padding: 12px;
-    background-color: ${DefaultTheme.colors.base.input};
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 1px ${DefaultTheme.colors.yellow};
-    }
-
-    grid-column: 3 / 4;
-    grid-row: 4;
-
-    font-family: ${DefaultTheme.fonts.family.roboto};
-    font-size: ${DefaultTheme.fonts.size.textS};
-    font-weight: ${DefaultTheme.fonts.weight.regular};
-    line-height: ${DefaultTheme.fonts.lineHeight._130};
-    color: ${DefaultTheme.colors.base.label};
-  }
-
   div {
     display: flex;
     flex-direction: column;
@@ -118,6 +97,11 @@ export const AdressContainer = styled.div`
   div:nth-child(2) {
     grid-column: 1 / 4;
     grid-row: 2;
+
+    input {
+      cursor: not-allowed;
+      background-color: ${DefaultTheme.colors.base.button};
+    }
   }
   div:nth-child(3) {
     grid-column: 1 / 2;
@@ -126,21 +110,38 @@ export const AdressContainer = styled.div`
   div:nth-child(4) {
     grid-column: 2 / 4;
     grid-row: 3;
-    &::placeholder {
-      font-style: italic;
-      opacity: 0.5;
+    input {
+      &::placeholder {
+        font-style: italic;
+        opacity: 0.5;
+      }
     }
   }
   div:nth-child(5) {
     grid-column: 1 / 2;
     grid-row: 4;
+
+    input {
+      cursor: not-allowed;
+      background-color: ${DefaultTheme.colors.base.button};
+    }
   }
   div:nth-child(6) {
     grid-column: 2 / 3;
     grid-row: 4;
+
+    input {
+      cursor: not-allowed;
+      background-color: ${DefaultTheme.colors.base.button};
+    }
   }
   div:nth-child(7) {
     grid-column: 3 / 4;
     grid-row: 4;
+
+    input {
+      cursor: not-allowed;
+      background-color: ${DefaultTheme.colors.base.button};
+    }
   }
 `;
