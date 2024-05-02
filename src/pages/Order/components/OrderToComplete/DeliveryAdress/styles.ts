@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
-export const Container = styled.div`
+export const PaymentAndAddressContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;

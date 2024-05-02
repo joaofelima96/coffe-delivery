@@ -12,7 +12,7 @@ import coffe from "../../../../assets/coffes/expresso-tradicional.svg";
 import { useForm } from "react-hook-form";
 import {
   AdressContainer,
-  Container as ContainerV2,
+  PaymentAndAddressContainer,
 } from "./DeliveryAdress/styles";
 import {
   Bank,
@@ -139,7 +139,7 @@ export const OrderToComplete = () => {
     <Container onSubmit={handleSubmit(handleAddNewAdreess)}>
       <AdressAndPaymentContainer>
         <Title>Complete seu pedido</Title>
-        <ContainerV2>
+        <PaymentAndAddressContainer>
           <section>
             <MapPinLine size={22} color={DefaultTheme.colors.yellowDark} />
             <div>
@@ -220,8 +220,8 @@ export const OrderToComplete = () => {
               <p>{errors.uf && errors.uf.message}</p>
             </div>
           </AdressContainer>
-        </ContainerV2>
-        <ContainerV2>
+        </PaymentAndAddressContainer>
+        <PaymentAndAddressContainer>
           <section>
             <CurrencyDollarSimple
               size={22}
@@ -282,7 +282,7 @@ export const OrderToComplete = () => {
             </div>
             {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
           </PaymentContainer>
-        </ContainerV2>
+        </PaymentAndAddressContainer>
       </AdressAndPaymentContainer>
 
       <div>
