@@ -54,5 +54,10 @@ export const PaymentFormatContainer = styled.div`
       border: 2px solid ${DefaultTheme.colors.purple};
       background-color: rgba(128, 71, 248, 0.1);
     }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px ${DefaultTheme.colors.purple};
+    }
   }
 `;
