@@ -105,6 +105,12 @@ export const OrderToComplete = () => {
       });
   };
 
+  const zipCodeMask = (value: string) => {
+    if (!value) return "";
+    value = value.replace(/(\d{5})(\d)/, "$1-$2");
+    return value;
+  };
+
   const handleZipCode = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const { target } = e;
     if (target instanceof HTMLInputElement) {
@@ -112,10 +118,21 @@ export const OrderToComplete = () => {
     }
   };
 
-  const zipCodeMask = (value: string) => {
-    if (!value) return "";
-    value = value.replace(/(\d{5})(\d)/, "$1-$2");
-    return value;
+  const notAllowedKeys = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (
+      !/[0-9\b]/.test(e.key) &&
+      ![
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Delete",
+        "Backspace",
+        "Tab",
+      ].includes(e.key)
+    ) {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -137,6 +154,9 @@ export const OrderToComplete = () => {
                 type="text"
                 placeholder="CEP"
                 maxLength={9}
+                onKeyDown={(e) => {
+                  notAllowedKeys(e);
+                }}
                 onKeyUp={(e) => handleZipCode(e)}
                 {...register("cep")}
                 onBlur={(e) => {
