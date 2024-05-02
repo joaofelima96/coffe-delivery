@@ -35,13 +35,13 @@ import { useState } from "react";
 import { PaymentContainer, PaymentFormatContainer } from "./Payment/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { listOfUfs } from "./listOfUds";
+import cep, { CEP } from "cep-promise";
 
 const adressFormSchema = yup.object({
   cep: yup
-    .number()
-    .typeError("CEP é obrigatório")
-    .required("CEP é obrigatório"),
+    .string()
+    .required("CEP é obrigatório")
+    .min(8, "Informe um CEP no formato válido"),
   street: yup.string().required("Rua é obrigatório"),
   number: yup
     .number()
@@ -55,7 +55,7 @@ const adressFormSchema = yup.object({
 });
 
 interface AddNewAdressProps {
-  cep: number;
+  cep: string;
   street: string;
   number: number;
   complement?: string | undefined;
@@ -67,6 +67,10 @@ interface AddNewAdressProps {
 
 export const OrderToComplete = () => {
   const [quantity, setQuantity] = useState(1);
+  const [adress, setAdress] = useState<AddNewAdressProps>();
+  const [adressFoundByCep, setAdressFoundByCep] = useState<CEP>();
+
+  console.log(adress);
 
   const onQtyChange = (value: number) => {
     setQuantity(value);
@@ -81,14 +85,35 @@ export const OrderToComplete = () => {
     resolver: yupResolver(adressFormSchema),
   });
 
-  const [adress, setAdress] = useState<AddNewAdressProps>();
-
   const handleAddNewAdreess = (data: AddNewAdressProps) => {
     9;
     setAdress(data);
   };
 
-  console.log(adress);
+  const handleSearchCep = async (cepValue: string) => {
+    if (!cepValue) return;
+
+    await cep(cepValue)
+      .then((res) => {
+        setAdressFoundByCep(res);
+      })
+      .catch((err) => {
+        err.message;
+      });
+  };
+
+  const handleZipCode = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const { target } = e;
+    if (target instanceof HTMLInputElement) {
+      target.value = zipCodeMask(target.value);
+    }
+  };
+
+  const zipCodeMask = (value: string) => {
+    if (!value) return "";
+    value = value.replace(/(\d{5})(\d)/, "$1-$2");
+    return value;
+  };
 
   return (
     <Container onSubmit={handleSubmit(handleAddNewAdreess)}>
@@ -106,10 +131,15 @@ export const OrderToComplete = () => {
           <AdressContainer>
             <div>
               <input
-                type="number"
+                type="text"
                 placeholder="CEP"
+                maxLength={9}
+                onKeyUp={(e) => handleZipCode(e)}
                 {...register("cep")}
-                onBlur={() => trigger("cep")}
+                onBlur={(e) => {
+                  trigger("cep");
+                  handleSearchCep(e.target.value);
+                }}
               />
               <p>{errors.cep && errors.cep.message}</p>
             </div>
@@ -117,14 +147,14 @@ export const OrderToComplete = () => {
               <input
                 type="text"
                 placeholder="Rua"
+                value={adressFoundByCep ? adressFoundByCep.street : ""}
                 {...register("street")}
-                onBlur={() => trigger("street")}
               />
               <p>{errors.street && errors.street.message}</p>
             </div>
             <div>
               <input
-                type="number"
+                type="text"
                 placeholder="Número"
                 {...register("number")}
                 onBlur={() => trigger("number")}
@@ -143,8 +173,8 @@ export const OrderToComplete = () => {
               <input
                 type="text"
                 placeholder="Bairro"
+                value={adressFoundByCep ? adressFoundByCep.neighborhood : ""}
                 {...register("neighborhood")}
-                onBlur={() => trigger("neighborhood")}
               />
               <p>{errors.neighborhood && errors.neighborhood.message}</p>
             </div>
@@ -152,24 +182,18 @@ export const OrderToComplete = () => {
               <input
                 type="text"
                 placeholder="Cidade"
+                value={adressFoundByCep ? adressFoundByCep.city : ""}
                 {...register("city")}
-                onBlur={() => trigger("city")}
               />
               <p>{errors.city && errors.city.message}</p>
             </div>
             <div>
-              <select
+              <input
+                type="text"
+                placeholder="UF"
                 {...register("uf")}
-                defaultValue=""
-                onBlur={() => trigger("uf")}
-              >
-                <option value="" disabled hidden>
-                  UF
-                </option>
-                {listOfUfs.map((uf) => (
-                  <option key={uf}>{uf}</option>
-                ))}
-              </select>
+                value={adressFoundByCep ? adressFoundByCep.state : ""}
+              />
               <p>{errors.uf && errors.uf.message}</p>
             </div>
           </AdressContainer>
