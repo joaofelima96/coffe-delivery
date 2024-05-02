@@ -35,7 +35,7 @@ import { useState } from "react";
 import { PaymentContainer, PaymentFormatContainer } from "./Payment/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import cep, { CEP } from "cep-promise";
+import cep from "cep-promise";
 
 const adressFormSchema = yup.object({
   cep: yup
@@ -50,7 +50,7 @@ const adressFormSchema = yup.object({
   complement: yup.string(),
   neighborhood: yup.string().required("Bairro é obrigatório"),
   city: yup.string().required("Cidade é obrigatório"),
-  uf: yup.string().required("UF é obrigatório").min(2).max(2),
+  uf: yup.string().required("UF é obrigatório"),
   paymentMethod: yup.string().required("Selecione uma forma de pagamento"),
 });
 
@@ -68,7 +68,6 @@ interface AddNewAdressProps {
 export const OrderToComplete = () => {
   const [quantity, setQuantity] = useState(1);
   const [adress, setAdress] = useState<AddNewAdressProps>();
-  const [adressFoundByCep, setAdressFoundByCep] = useState<CEP>();
 
   console.log(adress);
 
@@ -79,6 +78,7 @@ export const OrderToComplete = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     trigger,
   } = useForm({
@@ -95,7 +95,10 @@ export const OrderToComplete = () => {
 
     await cep(cepValue)
       .then((res) => {
-        setAdressFoundByCep(res);
+        setValue("street", res.street);
+        setValue("neighborhood", res.neighborhood);
+        setValue("city", res.city);
+        setValue("uf", res.state);
       })
       .catch((err) => {
         err.message;
@@ -144,12 +147,7 @@ export const OrderToComplete = () => {
               <p>{errors.cep && errors.cep.message}</p>
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="Rua"
-                value={adressFoundByCep ? adressFoundByCep.street : ""}
-                {...register("street")}
-              />
+              <input type="text" placeholder="Rua" {...register("street")} />
               <p>{errors.street && errors.street.message}</p>
             </div>
             <div>
@@ -173,27 +171,16 @@ export const OrderToComplete = () => {
               <input
                 type="text"
                 placeholder="Bairro"
-                value={adressFoundByCep ? adressFoundByCep.neighborhood : ""}
                 {...register("neighborhood")}
               />
               <p>{errors.neighborhood && errors.neighborhood.message}</p>
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="Cidade"
-                value={adressFoundByCep ? adressFoundByCep.city : ""}
-                {...register("city")}
-              />
+              <input type="text" placeholder="Cidade" {...register("city")} />
               <p>{errors.city && errors.city.message}</p>
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="UF"
-                {...register("uf")}
-                value={adressFoundByCep ? adressFoundByCep.state : ""}
-              />
+              <input type="text" placeholder="UF" {...register("uf")} />
               <p>{errors.uf && errors.uf.message}</p>
             </div>
           </AdressContainer>
