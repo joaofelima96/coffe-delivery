@@ -51,7 +51,6 @@ export const PaymentFormatContainer = styled.div`
     border-radius: 6px;
 
     &:checked {
-      border: 2px solid ${DefaultTheme.colors.purple};
       background-color: rgba(128, 71, 248, 0.1);
     }
 
