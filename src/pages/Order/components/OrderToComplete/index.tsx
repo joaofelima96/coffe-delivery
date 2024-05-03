@@ -13,11 +13,13 @@ import { useForm } from "react-hook-form";
 import {
   AdressContainer,
   PaymentAndAddressContainer,
+  FindCepContainer,
 } from "./DeliveryAdress/styles";
 import {
   Bank,
   CreditCard,
   CurrencyDollarSimple,
+  MagnifyingGlass,
   MapPinLine,
   Money,
   Trash,
@@ -94,7 +96,7 @@ export const OrderToComplete = () => {
   };
 
   const handleSearchCep = async (cepValue: string) => {
-    if (!cepValue) return;
+    if (!cepValue || cepValue.length <= 8) return;
 
     await cep(cepValue)
       .then((res) => {
@@ -148,6 +150,13 @@ export const OrderToComplete = () => {
     }
   };
 
+  const handleRedirect = () => {
+    window.open(
+      "https://www2.correios.com.br/sistemas/buscacep/buscacep.cfm",
+      "_blank"
+    );
+  };
+
   return (
     <Container onSubmit={handleSubmit(handleAddNewAdreess)}>
       <AdressAndPaymentContainer>
@@ -159,6 +168,22 @@ export const OrderToComplete = () => {
               <span>Endereço de entrega</span>
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
+
+            <FindCepContainer>
+              <MagnifyingGlass
+                size={20}
+                color={DefaultTheme.colors.white}
+                onClick={() => handleRedirect()}
+                cursor={"pointer"}
+                style={{
+                  background: "#DBAC2C",
+                  opacity: 0.7,
+                  borderRadius: "8px",
+                  padding: 3,
+                }}
+              />
+              <p>Não sei meu CEP</p>
+            </FindCepContainer>
           </section>
 
           <AdressContainer>

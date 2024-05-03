@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { DefaultTheme } from "../../../../../styles/DefaultTheme";
 
+export const FindCepContainer = styled.div`
+  position: absolute;
+  left: 210px;
+  top: 78px;
+`;
+
 export const PaymentAndAddressContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,8 +24,26 @@ export const PaymentAndAddressContainer = styled.div`
   }
 
   section {
+    position: relative;
     display: flex;
     gap: 8px;
+
+    > ${FindCepContainer} {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+
+      p {
+        margin: 0;
+        font-family: ${DefaultTheme.fonts.family.roboto};
+        font-size: ${DefaultTheme.fonts.size.textS};
+        font-weight: ${DefaultTheme.fonts.weight.regular};
+        line-height: ${DefaultTheme.fonts.lineHeight._130};
+        color: ${DefaultTheme.colors.base.label};
+      }
+    }
 
     span {
       font-family: ${DefaultTheme.fonts.family.roboto};
