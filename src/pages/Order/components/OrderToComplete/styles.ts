@@ -3,7 +3,7 @@ import { DefaultTheme } from "../../../../styles/DefaultTheme";
 
 export const Container = styled.form`
   display: flex;
-  padding: 40px 160px 160px 160px;
+  padding: 40px 160px 100px 160px;
   gap: 32px;
 `;
 

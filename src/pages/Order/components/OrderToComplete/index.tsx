@@ -36,6 +36,7 @@ import { PaymentContainer, PaymentFormatContainer } from "./Payment/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import cep from "cep-promise";
+import toast, { Toaster } from "react-hot-toast";
 
 const adressFormSchema = yup.object({
   cep: yup
@@ -54,20 +55,22 @@ const adressFormSchema = yup.object({
   paymentMethod: yup.string().required("Selecione uma forma de pagamento"),
 });
 
-interface AddNewAdressProps {
-  cep: string;
-  street: string;
-  number: number;
-  complement?: string | undefined;
-  neighborhood: string;
-  city: string;
-  uf: string;
-  paymentMethod?: string | undefined;
-}
+const initialState = {
+  cep: "",
+  street: "",
+  number: 0,
+  complement: "",
+  neighborhood: "",
+  city: "",
+  uf: "",
+  paymentMethod: "",
+};
 
 export const OrderToComplete = () => {
+  type addNewAdressProps = yup.InferType<typeof adressFormSchema>;
+
   const [quantity, setQuantity] = useState(1);
-  const [adress, setAdress] = useState<AddNewAdressProps>();
+  const [adress, setAdress] = useState<addNewAdressProps>(initialState);
 
   console.log(adress);
 
@@ -85,7 +88,7 @@ export const OrderToComplete = () => {
     resolver: yupResolver(adressFormSchema),
   });
 
-  const handleAddNewAdreess = (data: AddNewAdressProps) => {
+  const handleAddNewAdreess = (data: addNewAdressProps) => {
     9;
     setAdress(data);
   };
@@ -95,13 +98,23 @@ export const OrderToComplete = () => {
 
     await cep(cepValue)
       .then((res) => {
-        setValue("street", res.street);
-        setValue("neighborhood", res.neighborhood);
-        setValue("city", res.city);
-        setValue("uf", res.state);
+        const adress = res;
+
+        setValue("street", adress.street);
+        setValue("neighborhood", adress.neighborhood);
+        setValue("city", adress.city);
+        setValue("uf", adress.state);
       })
-      .catch((err) => {
-        err.message;
+
+      .catch(() => {
+        toast("CEP não encontrado!", {
+          icon: "❌",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
       });
   };
 
@@ -335,6 +348,7 @@ export const OrderToComplete = () => {
             <button type="submit">CONFIRMAR PEDIDO</button>
           </PriceContainer>
         </CartContainer>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     </Container>
   );
